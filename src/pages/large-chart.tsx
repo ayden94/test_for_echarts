@@ -20,7 +20,7 @@ const initialData = generateInitialData(100000);
 const initialOptions = {
   tooltip: {
     trigger: 'axis',
-    backgroundColor: 'rgba(50,50,50,0.7)', // Semi-transparent dark background
+    backgroundColor: 'rgba(250,250,250,0.7)', // Semi-transparent dark background
     borderColor: '#333', // Dark border
     borderWidth: 1,
     padding: [10, 15], // Top/bottom, left/right padding
