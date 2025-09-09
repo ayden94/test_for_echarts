@@ -19,7 +19,7 @@ function generateDualAxisData(count: number) {
   }
   return { barData, lineData };
 }
-const { barData, lineData } = generateDualAxisData(20000); // Initial 100,000 points
+const { barData, lineData } = generateDualAxisData(15000); // Initial 50,000 points
 
 const initialOptions: EChartsOption = {
   tooltip: {
@@ -27,7 +27,7 @@ const initialOptions: EChartsOption = {
   },
   title: {
     left: 'center',
-    text: 'Dual Y-Axis Chart (Bar & Line) with 100,000 Points',
+    text: 'Dual Y-Axis Chart (Bar & Line) with 30,000 Points',
   },
   legend: {
     data: ['Bar Series', 'Line Series'],

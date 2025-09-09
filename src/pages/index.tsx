@@ -13,10 +13,10 @@ const chartPages = [
     path: '/large-chart',
     title: 'Large Dataset Chart',
     description:
-      '대용량 데이터(100,000개 포인트)를 실시간으로 스트리밍하는 차트입니다.',
+      '대용량 데이터(300,000개 포인트)를 실시간으로 스트리밍하는 차트입니다.',
     features: [
       '실시간 데이터 스트리밍',
-      '100,000개 데이터 포인트',
+      '300,000개 데이터 포인트',
       '성능 최적화',
       'DataZoom',
     ],

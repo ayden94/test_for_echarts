@@ -12,7 +12,7 @@ function randn_bm() {
 
 const generateData = () => {
   const data = [];
-  for (let i = 0; i < 5000; i++) {
+  for (let i = 0; i < 500000; i++) {
     const x = randn_bm() * 4 + 5; // 평균 5, 표준편차 4
     const y = 0.5 * x + 1.5 + randn_bm() * 1.5; // y도 정규분포 노이즈
     data.push([x, y]);
@@ -59,7 +59,7 @@ function bin2D(data: number[][], xBins: number, yBins: number): number[][] {
 
 const option: EChartsOption = {
   title: {
-    text: 'Line and Scatter Plot with 10,000 Data Points',
+    text: 'Line and Scatter Plot with 500,000 Data Points',
     left: 'center',
   },
   tooltip: {
@@ -96,7 +96,7 @@ const option: EChartsOption = {
   ],
   visualMap: {
     min: 0,
-    max: 100,
+    max: 10000,
     calculable: true,
     orient: 'horizontal',
     left: 'center',
@@ -112,7 +112,7 @@ const option: EChartsOption = {
       data: bin2D(largeData, 30, 20),
       xAxisIndex: 1,
       yAxisIndex: 1,
-      z: 1,
+      z: 2,
       itemStyle: {
         opacity: 0.6,
       },
@@ -127,7 +127,7 @@ const option: EChartsOption = {
       itemStyle: {
         color: 'rgba(60,120,255,0.8)',
       },
-      z: 2,
+      z: 1,
     },
   ],
   // 2D binning 함수: 데이터를 xBins * yBins 격자로 집계
