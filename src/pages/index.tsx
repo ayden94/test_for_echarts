@@ -10,6 +10,32 @@ const chartPages = [
     features: ['카테고리별 데이터', '애니메이션 효과', '툴팁'],
   },
   {
+    path: '/large-chart',
+    title: 'Large Dataset Chart',
+    description:
+      '대용량 데이터(100,000개 포인트)를 실시간으로 스트리밍하는 차트입니다.',
+    features: [
+      '실시간 데이터 스트리밍',
+      '100,000개 데이터 포인트',
+      '성능 최적화',
+      'DataZoom',
+    ],
+  },
+  {
+    path: '/mixed-chart',
+    title: 'Mixed Chart',
+    description:
+      '여러 차트 타입(선, 막대, 영역)을 하나의 차트에 조합한 복합 차트입니다.',
+    features: ['복합 차트 타입', '선/막대/영역 차트', '다양한 시각화'],
+  },
+  {
+    path: '/dual-y-axis-chart',
+    title: 'Dual Y-Axis Chart',
+    description:
+      '서로 다른 스케일의 데이터를 하나의 차트에 표시하는 이중 Y축 차트입니다.',
+    features: ['이중 Y축', '다중 데이터 시리즈', '서로 다른 스케일'],
+  },
+  {
     path: '/line-scatter',
     title: 'Line & Scatter Plot',
     description:
@@ -27,32 +53,6 @@ const chartPages = [
     description:
       '히트맵과 산점도를 결합한 밀도 시각화 차트입니다. 데이터가 집중된 영역을 색상으로 표현합니다.',
     features: ['2D 히트맵', '산점도 오버레이', '이중 축 시스템', '밀도 시각화'],
-  },
-  {
-    path: '/large-chart',
-    title: 'Large Dataset Chart',
-    description:
-      '대용량 데이터(100,000개 포인트)를 실시간으로 스트리밍하는 차트입니다.',
-    features: [
-      '실시간 데이터 스트리밍',
-      '100,000개 데이터 포인트',
-      '성능 최적화',
-      'DataZoom',
-    ],
-  },
-  {
-    path: '/dual-y-axis-chart',
-    title: 'Dual Y-Axis Chart',
-    description:
-      '서로 다른 스케일의 데이터를 하나의 차트에 표시하는 이중 Y축 차트입니다.',
-    features: ['이중 Y축', '다중 데이터 시리즈', '서로 다른 스케일'],
-  },
-  {
-    path: '/mixed-chart',
-    title: 'Mixed Chart',
-    description:
-      '여러 차트 타입(선, 막대, 영역)을 하나의 차트에 조합한 복합 차트입니다.',
-    features: ['복합 차트 타입', '선/막대/영역 차트', '다양한 시각화'],
   },
 ];
 
@@ -115,9 +115,13 @@ export default function HomePage() {
             >
               <div
                 style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
                   background: 'white',
                   borderRadius: '12px',
                   padding: '1.5rem',
+                  height: '300px',
                   boxShadow:
                     hoveredCard === index
                       ? '0 20px 40px rgba(0,0,0,0.2)'
@@ -151,6 +155,7 @@ export default function HomePage() {
                     color: '#666',
                     marginBottom: '1rem',
                     lineHeight: '1.6',
+                    wordBreak: 'keep-all',
                   }}
                 >
                   {chart.description}
