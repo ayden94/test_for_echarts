@@ -95,6 +95,7 @@ const initialOptions = {
       type: 'line',
       smooth: true,
       symbol: 'none',
+      animation: false,
       data: initialData,
     },
   ],
@@ -130,7 +131,6 @@ export default function LargeChartPage() {
             series: [
               {
                 data: newData,
-                animation: false, // Keep animation false for smooth sliding
               },
             ],
           });
