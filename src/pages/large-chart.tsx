@@ -116,16 +116,13 @@ function LargeChart({
   useEffect(() => {
     if (chartRef.current) {
       const chartInstance = chartRef.current.getEchartsInstance();
-      chartInstance.setOption(
-        {
-          series: [
-            {
-              data: data,
-            },
-          ],
-        },
-        false, // notMerge: false로 기존 옵션 유지
-      );
+      chartInstance.setOption({
+        series: [
+          {
+            data: data,
+          },
+        ],
+      });
     }
   }, [data]);
 
@@ -134,7 +131,6 @@ function LargeChart({
       ref={chartRef}
       option={initialOptions}
       style={{ height }}
-      notMerge={false}
       lazyUpdate={true}
     />
   );
