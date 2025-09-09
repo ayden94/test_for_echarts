@@ -19,111 +19,105 @@ function generateDualAxisData(count: number) {
   }
   return { barData, lineData };
 }
+const { barData, lineData } = generateDualAxisData(1000); // Initial 100,000 points
+
+const initialOptions: EChartsOption = {
+  tooltip: {
+    trigger: 'axis',
+  },
+  title: {
+    left: 'center',
+    text: 'Dual Y-Axis Chart (Bar & Line) with 100,000 Points',
+  },
+  legend: {
+    data: ['Bar Series', 'Line Series'],
+    left: 'center',
+    top: '40px',
+  },
+  toolbox: {
+    feature: {
+      dataZoom: {
+        yAxisIndex: 'none',
+      },
+      restore: {},
+      saveAsImage: {},
+    },
+  },
+  xAxis: {
+    type: 'time',
+    boundaryGap: [0, 0], // No boundary gap for time axis
+  },
+  yAxis: [
+    // Two Y-axes
+    {
+      type: 'value',
+      name: 'Bar Value',
+      position: 'left',
+      alignTicks: true,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#5470C6', // Color for left axis
+        },
+      },
+      axisLabel: {
+        formatter: '{value} units',
+      },
+      boundaryGap: [0, '100%'],
+    },
+    {
+      type: 'value',
+      name: 'Line Value',
+      position: 'right',
+      alignTicks: true,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#91CC75', // Color for right axis
+        },
+      },
+      axisLabel: {
+        formatter: '{value} score',
+      },
+      boundaryGap: [0, '100%'],
+    },
+  ],
+  dataZoom: [
+    {
+      type: 'inside',
+      start: 50,
+      end: 100,
+    },
+    {
+      start: 0,
+      end: 100,
+    },
+  ],
+  series: [
+    {
+      name: 'Bar Series',
+      type: 'bar',
+      yAxisIndex: 0, // Use the left Y-axis
+      data: barData,
+      animation: false,
+    },
+    {
+      name: 'Line Series',
+      type: 'line',
+      yAxisIndex: 1, // Use the right Y-axis
+      smooth: true,
+      symbol: 'circle', // Show symbols
+      symbolSize: 1, // Make symbols a bit larger for easier hovering
+      data: lineData,
+      animation: false,
+    },
+  ],
+};
 
 export default function DualYAxisChartPage() {
   const chartRef = useRef<InstanceType<typeof ReactECharts> | null>(null);
 
   useEffect(() => {
-    const { barData, lineData } = generateDualAxisData(100000); // Initial 100,000 points
-
-    const initialOptions: EChartsOption = {
-      tooltip: {
-        trigger: 'axis',
-      },
-      title: {
-        left: 'center',
-        text: 'Dual Y-Axis Chart (Bar & Line) with 100,000 Points',
-      },
-      legend: {
-        data: ['Bar Series', 'Line Series'],
-        left: 'center',
-        top: '40px',
-      },
-      toolbox: {
-        feature: {
-          dataZoom: {
-            yAxisIndex: 'none',
-          },
-          restore: {},
-          saveAsImage: {},
-        },
-      },
-      xAxis: {
-        type: 'time',
-        boundaryGap: [0, 0], // No boundary gap for time axis
-      },
-      yAxis: [
-        // Two Y-axes
-        {
-          type: 'value',
-          name: 'Bar Value',
-          position: 'left',
-          alignTicks: true,
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: '#5470C6', // Color for left axis
-            },
-          },
-          axisLabel: {
-            formatter: '{value} units',
-          },
-          boundaryGap: [0, '100%'],
-        },
-        {
-          type: 'value',
-          name: 'Line Value',
-          position: 'right',
-          alignTicks: true,
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: '#91CC75', // Color for right axis
-            },
-          },
-          axisLabel: {
-            formatter: '{value} score',
-          },
-          boundaryGap: [0, '100%'],
-        },
-      ],
-      dataZoom: [
-        {
-          type: 'inside',
-          start: 50,
-          end: 100,
-        },
-        {
-          start: 0,
-          end: 100,
-        },
-      ],
-      series: [
-        {
-          name: 'Bar Series',
-          type: 'bar',
-          yAxisIndex: 0, // Use the left Y-axis
-          data: barData,
-          animation: false,
-        },
-        {
-          name: 'Line Series',
-          type: 'line',
-          yAxisIndex: 1, // Use the right Y-axis
-          smooth: true,
-          symbol: 'circle', // Show symbols
-          symbolSize: 1, // Make symbols a bit larger for easier hovering
-          data: lineData,
-          animation: false,
-        },
-      ],
-    };
-
-    // Set initial options
-    if (chartRef.current) {
-      chartRef.current.getEchartsInstance().setOption(initialOptions);
-    }
-
     const interval = setInterval(() => {
       if (chartRef.current) {
         const echartsInstance = chartRef.current.getEchartsInstance();
@@ -173,7 +167,7 @@ export default function DualYAxisChartPage() {
     <div style={{ width: '100%', height: '100vh' }}>
       <ReactECharts
         ref={chartRef}
-        option={{}} // Initial empty option, will be set by useEffect
+        option={initialOptions} // Initial empty option, will be set by useEffect
         style={{ height: '100%' }}
         opts={{ renderer: 'canvas' }}
       />
