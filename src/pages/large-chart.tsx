@@ -139,7 +139,7 @@ function LargeChart({
 // 부모 컴포넌트
 export default function LargeChartPage() {
   const [chartData, setChartData] = useState<[number, number][]>(() =>
-    generateInitialData(100000),
+    generateInitialData(300000),
   );
   const [isRealTime, setIsRealTime] = useState(true);
 

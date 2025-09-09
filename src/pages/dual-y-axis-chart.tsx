@@ -19,7 +19,7 @@ function generateDualAxisData(count: number) {
   }
   return { barData, lineData };
 }
-const { barData, lineData } = generateDualAxisData(1000); // Initial 100,000 points
+const { barData, lineData } = generateDualAxisData(20000); // Initial 100,000 points
 
 const initialOptions: EChartsOption = {
   tooltip: {
